@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplicationbandaMusicales.BandasMusicales>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo registro", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Bandas
+        </th>
+        <th>
+            Albums
+        </th>
+        <th>
+            Descripcion
+        </th>
+        <th>
+            Notas
+        </th>
+        <th>
+            Fotos
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.banda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.albums)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notas)
+        </td>
+        <td>           
+            
+            @Html.DisplayFor(modelItem => item.ruta_foto)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Detalle", "Details", new { id=item.id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
